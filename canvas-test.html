@@ -5,27 +5,58 @@
 <body>
 <h1 id="head1">!!WARNING - CANVAS TESTING GROUND!!</h1>
 <p id="preface">This is my canvas testing ground.</p>
-<canvas id="testingGround" width="200" height="100" style="border:1px solid #000000;">Canvas didn't render.</canvas>
-<br><button id="startAnime" onclick="circleAnimation()">Start Animation</button>
+<canvas id="testingGround" width=1000 height=750 style="border:1px solid #000000;">Canvas didn't render.</canvas>
+<br><button id="startAnime" onclick="animate()">Start Animation</button>
 <script>
-var tground=document.getElementById("testingGround);
+var tground=document.getElementById("testingGround");
 var ctext=tground.getContext("2d");
 
-window.requestAnimFrame = (function(callback) {
-	return window.requestAnimationFrame || 
-	window.webkitRequestAnimationFrame || 
-	window.mozRequestAnimationFrame || 
-	window.oRequestAnimationFrame || 
-	window.msRequestAnimationFrame || 
-	function(callback) { window.setTimeout(callback, 1000 / 60); };
+drawRect(myRect, ctext);
+
+(function() {
+  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+  window.requestAnimationFrame = requestAnimationFrame;
 })();
 
+var myRect = {
+x: 0,
+y: 75,
+width: 100,
+height: 50,
+borderWidth: 1
+};
 
-function circleAnimation ()
-{
+drawRect(myRect, ctext);
+setTimeout(function() {
+	var startTime = (new Date()).getTime();
+	animate(myRect, ctext, tground, startTime);},
+	1000);
 
-	
+function drawRect (myRect, context) {
+	context.beginPath();
+	context.rect(myRect.x, myRect.y, myRect.width, myRect.height);
+	context.fillStyle = "#00FF00";
+	context.fill();
+	context.lineWidth = myRect.borderWidth;
+	context.strokeStyle = "black"
+	context.stroke();
 }
+
+function animate(myRect, canvas, context, startTime) {
+	var time = (new Date()).getTime() - startTime;
+	var linearSpeed = 100;
+	var newX = linearSpeed * time / 1000;
+	if (newX < canvas.width - myRect.width - myRect.borderWidth / 2) {
+		myRect.x = newX;
+	}
+	
+	context.clearRect(0, 0, context.width, context.height);
+
+	drawRect(myRect, context);
+	
+	requestAnimationFrame(function() { animate(myRect, canvas, context, startTime);});
+}
+
 </script>
 </body>
 </html>
