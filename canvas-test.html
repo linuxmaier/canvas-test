@@ -1,4 +1,5 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
 <title>Canvas Testing Ground</title>
 </head>
@@ -6,18 +7,39 @@
 <h1 id="head1">!!WARNING - CANVAS TESTING GROUND!!</h1>
 <p id="preface">This is my canvas testing ground.</p>
 <canvas id="testingGround" width=1000 height=750 style="border:1px solid #000000;">Canvas didn't render.</canvas>
-<br><button id="startAnime" onclick="animate()">Start Animation</button>
 <script>
-var tground=document.getElementById("testingGround");
-var ctext=tground.getContext("2d");
-
-drawRect(myRect, ctext);
-
 (function() {
   var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
   window.requestAnimationFrame = requestAnimationFrame;
 })();
 
+function drawRect (myRect, ctext) {
+	ctext.beginPath();
+	ctext.rect(myRect.x, myRect.y, myRect.width, myRect.height);
+	ctext.fillStyle = "#00FF00";
+	ctext.fill();
+	ctext.lineWidth = myRect.borderWidth;
+	ctext.strokeStyle = "black";
+	ctext.stroke();
+}
+
+function animate(myRect, tground, ctext, startTime) {
+	var time = (new Date()).getTime() - startTime;
+	var linearSpeed = 100;
+	var newX = linearSpeed * time / 1000;
+	if (newX < tground.width - myRect.width - myRect.borderWidth / 2) {
+		myRect.x = newX;
+	}
+	
+	ctext.clearRect(0, 0, tground.width, tground.height);
+
+	drawRect(myRect, ctext);
+	
+	requestAnimationFrame(function() { animate(myRect, tground, ctext, startTime);});
+}
+
+var tground = document.getElementById("testingGround");
+var ctext = tground.getContext("2d");
 var myRect = {
 x: 0,
 y: 75,
@@ -27,36 +49,11 @@ borderWidth: 1
 };
 
 drawRect(myRect, ctext);
+
 setTimeout(function() {
 	var startTime = (new Date()).getTime();
-	animate(myRect, ctext, tground, startTime);},
-	1000);
-
-function drawRect (myRect, context) {
-	context.beginPath();
-	context.rect(myRect.x, myRect.y, myRect.width, myRect.height);
-	context.fillStyle = "#00FF00";
-	context.fill();
-	context.lineWidth = myRect.borderWidth;
-	context.strokeStyle = "black"
-	context.stroke();
-}
-
-function animate(myRect, canvas, context, startTime) {
-	var time = (new Date()).getTime() - startTime;
-	var linearSpeed = 100;
-	var newX = linearSpeed * time / 1000;
-	if (newX < canvas.width - myRect.width - myRect.borderWidth / 2) {
-		myRect.x = newX;
-	}
-	
-	context.clearRect(0, 0, context.width, context.height);
-
-	drawRect(myRect, context);
-	
-	requestAnimationFrame(function() { animate(myRect, canvas, context, startTime);});
-}
-
+	animate(myRect, tground, ctext, startTime);
+}, 1000);
 </script>
 </body>
 </html>
