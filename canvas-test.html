@@ -25,10 +25,13 @@ function drawRect (myRect, ctext) {
 
 function animate(myRect, tground, ctext, startTime) {
 	var time = (new Date()).getTime() - startTime;
-	var linearSpeed = 100;
-	var newX = linearSpeed * time / 1000;
+	var linearSpeed = 500;
+	var newX = linearSpeed * Math.pow(time / 1000, 2);
 	if (newX < tground.width - myRect.width - myRect.borderWidth / 2) {
 		myRect.x = newX;
+	}
+	else {
+		myRect.x = tground.width - myRect.width - myRect.borderWidth;
 	}
 	
 	ctext.clearRect(0, 0, tground.width, tground.height);
