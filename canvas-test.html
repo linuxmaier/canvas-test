@@ -23,48 +23,39 @@ function drawRect (myRect, ctext) {
 	ctext.stroke();
 }
 
-function animate(myRect, tground, ctext, startTime) {
-	var time = (new Date()).getTime() - startTime;
-	var linearSpeed = 10;
+function animate(myRect, tground, ctext) {
+	var linearSpeed = 0;
+	var startTime;
+	var acceleration = 1;
+	var friction = .8;
+	var xVelocity = 0;
+	var yVelocity = 0;
+	if (keys[37] || keys[39]) {
+		xAccel(myRect, xVelocity, acceleration, friction);
+	}
+	if (keys[38] || keys[40]) {
+		yAccel(myRect, yVelocity, acceleration, friction);
+	}
+	if (!(keys[37] || keys[38] || keys[39] || keys[40])) {
+		if (xVelocity > 1 || xVelocity < -1) {
+			xVelocity *= friction;
+		}
+		else {
+			xVelocty = 0;
+		}
+		if (yVelocity > 1 || yVelocity < -1) {
+			yVelocity *= friction;
+		}
+		else {
+			yVelocity = 0;
+		}
+		
+	}
+	startTime = (new Date()).getTime();
+}
 
-	if (keys[38]) {
-		if (myRect.y > 0) {
-			myRect.y -= linearSpeed;
-		}
-		else {
-			myRect.y = 0;
-		}
-	}
-	if (keys[37]) {
-		if (myRect.x > 0) {
-			myRect.x -= linearSpeed;
-		}
-		else {
-			myRect.x = 0;
-		}
-	}
-	if (keys[40]) {
-		if (myRect.y < tground.height - myRect.height - myRect.borderWidth / 2) {
-			myRect.y += linearSpeed;
-		}
-		else {
-			myRect.y = tground.height - myRect.height - myRect.borderWidth / 2;
-		}
-	}
-	if (keys[39]) {
-		if (myRect.x < tground.width - myRect.width - myRect.borderWidth / 2) {
-			myRect.x += linearSpeed;
-		}
-		else {
-			myRect.x = tground.width - myRect.width - myRect.borderWidth / 2;
-		}
-	}
+function xAccel(xVelocity, acceleration) {
 	
-	ctext.clearRect(0, 0, tground.width, tground.height);
-
-	drawRect(myRect, ctext);
-	
-	requestAnimationFrame(function() { animate(myRect, tground, ctext, startTime);});
 }
 
 var tground = document.getElementById("testingGround");
@@ -87,8 +78,7 @@ document.body.addEventListener("keydown", function (e) { keys[e.keyCode] = true;
 document.body.addEventListener("keyup", function (e) { keys[e.keyCode] = false; });
 
 setTimeout(function() {
-	var startTime = (new Date()).getTime();
-	animate(myRect, tground, ctext, startTime);
+	animate(myRect, tground, ctext);
 }, 1000);
 </script>
 </body>
