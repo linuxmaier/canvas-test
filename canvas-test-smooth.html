@@ -51,15 +51,19 @@ function animate (myRect, ctext, tground, startTime) {
 	var calcTime = time / 100;
 	var acceleration = 10;
 	var maxSpeed = 50;
+	var borderEAbsorb = .75;
 	
 	//sets Velocity
-	if (keys[37] || keys[38] || keys[39] || keys[40]) {
+	if (keys[37] || keys[39]) {
 		myRect.xVelocity = applyAccel(myRect.xVelocity, maxSpeed, "x", acceleration, calcTime);
-		myRect.yVelocity = applyAccel(myRect.yVelocity, maxSpeed, "y", acceleration, calcTime);
 	}
-	//if no key, apply friction
 	else {
 		myRect.xVelocity *= myRect.friction;
+	}
+	if (keys[38] || keys[40]) {
+		myRect.yVelocity = applyAccel(myRect.yVelocity, maxSpeed, "y", acceleration, calcTime);
+	}
+	else {
 		myRect.yVelocity *= myRect.friction;
 	}
 
@@ -67,24 +71,24 @@ function animate (myRect, ctext, tground, startTime) {
 	//checks right border
 	if (myRect.x > tground.width - myRect.width - myRect.borderWidth / 2) { 
 		myRect.x = tground.width - myRect.width - myRect.borderWidth / 2;
-		myRect.xVelocity *= -.75;
+		myRect.xVelocity *= -borderEAbsorb;
 	}
 	//checks left border
 	if (myRect.x < 0) {
 		myRect.x = 0;
-		myRect.xVelocity *= -.75;
+		myRect.xVelocity *= -borderEAbsorb;
 	}
 
 	myRect.y += myRect.yVelocity * calcTime;
 	//checks bottom border
 	if (myRect.y > tground.height - myRect.height - myRect.borderWidth / 2) {
 		myRect.y = tground.height - myRect.height - myRect.borderWidth / 2;
-		myRect.yVelocity *= -.75;
+		myRect.yVelocity *= -borderEAbsorb;
 	}
 	//checks top border
 	if (myRect.y < 0) {
 		myRect.y = 0;
-		myRect.yVelocity *= -.75;
+		myRect.yVelocity *= -borderEAbsorb;
 	}
 
 	//clears canvas
