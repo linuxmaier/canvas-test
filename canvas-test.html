@@ -66,6 +66,10 @@ function animate (myRect, ctext, tground, startTime) {
 	else {
 		myRect.yVelocity *= myRect.friction;
 	}
+	
+	//rounds to 0
+	if (myRect.xVelocity > -1 && myRect.xVelocity < 1) myRect.xVelocity = 0;
+	if (myRect.yVelocity > -1 && myRect.yVelocity < 1) myRect.yVelocity = 0;
 
 	myRect.x += myRect.xVelocity * calcTime;
 	//checks right border
