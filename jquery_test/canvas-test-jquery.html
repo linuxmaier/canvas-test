@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="canvasstyle.css">
+<title>Canvas Testing Ground</title>
+<script type="text/javascript" src="animation.js"></script>
+</head>
+<body>
+<h1 id="head1">!!WARNING - CANVAS TESTING GROUND!!</h1>
+<p id="preface">This is my canvas testing ground.</p>
+<canvas id="testingGround" width=750 height=500 style="border:1px solid #000000;">Canvas didn't render.</canvas>
+<div id="styledForm" class="myform">
+<form id="blockStats">
+Max Speed: <input type="text" value=""><br>
+Acceleration: <input type="text" value=""><br>
+Friction: <input type="text" value=""><br>
+</form>
+</div>
+<script>
+(function() {
+  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+  window.requestAnimationFrame = requestAnimationFrame;
+})();
+
+var tground = document.getElementById("testingGround");
+var ctext = tground.getContext("2d");
+var startTime = (new Date()).getTime();
+
+var myRect = {
+x: 0,
+y: 75,
+width: 100,
+height: 50,
+borderWidth: 1,
+fillStyling: "#00FF00",
+xVelocity: 0,
+yVelocity: 0,
+friction: .8
+};
+
+var keys = [];
+
+document.body.addEventListener("keydown", function (e) {keys[e.keyCode] = true;});
+
+document.body.addEventListener("keyup", function (e) {keys[e.keyCode] = false;});
+
+drawRect(myRect, ctext);
+
+animate(myRect, ctext, tground, startTime);
+
+</script>
+</body>
+</html>
