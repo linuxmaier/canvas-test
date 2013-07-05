@@ -1,5 +1,33 @@
-#blockStats {
-margin: 10px;
+h1 {
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+text-align: center;
+}
+
+p {
+font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+text-align: center; 
+}
+
+#app {
+margin-right: auto;
+margin-left: auto;
+width: 1000px;
+}
+
+#app form {
+float: right;
+width: 200px;
+display: table;
+font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 border: 5px solid gray;
-padding: 10px;
+}
+
+#app label {
+display: table;
+width: 120px;
+text-align: right;
+}
+
+#app input {
+width: 20px;
 }
