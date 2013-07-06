@@ -1,33 +1,63 @@
-h1 {
-font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+@font-face {
+font-family: capture;
+src: url('Capture_it.ttf');
+}
+
+body {
+background-image: url('stripe_shallow.png');
+background-repeat: repeat;
 text-align: center;
 }
 
+h1 {
+display: inline;
+padding: 0px 5px;
+color: #E5CC2A;
+background-color: #000000;
+border-radius: 5px 5px 5px 5px;
+font-family: capture, sans-serif;
+}
+
 p {
+font-size: 150%;
 font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 text-align: center; 
 }
 
+#testingGround {
+background-color: #FFFFFF;
+}
+
 #app {
+background-color: #99CCFF;
+border-radius: 20px 20px 10px 10px;
+padding: 1px 10px 10px 10px;
 margin-right: auto;
 margin-left: auto;
-width: 1000px;
+margin-top: .5em;
+width: 950px;
 }
 
 #app form {
+padding: 5px;
+border-radius: 10px;
+background-color: #FFFFFF;
+margin: 0 auto;
 float: right;
-width: 200px;
-display: table;
+width: 170px;
 font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-border: 5px solid gray;
+border: 1px solid black;
 }
 
 #app label {
-display: table;
-width: 120px;
+float: left;
 text-align: right;
+margin-right: 0.5em;
+display: block
 }
 
 #app input {
-width: 20px;
+width: 50px;
+float: right;
+clear: both;
 }

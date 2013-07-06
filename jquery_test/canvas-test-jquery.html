@@ -10,9 +10,9 @@
 <div id="app">
 <p id="preface">This is my canvas testing ground.</p>
 <form id="blockStats">
-<label>Max Speed: </label><input type="text" value="">
-<label>Acceleration: </label><input type="text" value="">
-<label>Friction: </label><input type="text" value="">
+<input id="speed" type="text" value=""><label>Max Speed: </label>
+<input id="accel" type="text" value=""><label>Acceleration: </label>
+<input id="frict" type="text" value=""><label>Friction: </label>
 </form>
 <canvas id="testingGround" width=750 height=500 style="border:1px solid #000000;">Canvas didn't render.</canvas>
 </div>
@@ -43,6 +43,8 @@ var keys = [];
 document.body.addEventListener("keydown", function (e) {keys[e.keyCode] = true;});
 
 document.body.addEventListener("keyup", function (e) {keys[e.keyCode] = false;});
+
+document.getElementById("speed").
 
 drawRect(myRect, ctext);
 
