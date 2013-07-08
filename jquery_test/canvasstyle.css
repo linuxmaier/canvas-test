@@ -4,49 +4,35 @@ src: url('Capture_it.ttf');
 }
 
 body {
-background-image: url('stripe_shallow.png');
-background-repeat: repeat;
+background-image: url('black_pattern09.jpg');
+background-repeat: no-repeat;
+background-position:center top;
 text-align: center;
 }
 
-h1 {
-display: inline;
-padding: 0px 5px;
-color: #E5CC2A;
-background-color: #000000;
-border-radius: 5px 5px 5px 5px;
-font-family: capture, sans-serif;
-}
-
-p {
-font-size: 150%;
-font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-text-align: center; 
-}
-
-#testingGround {
-background-color: #FFFFFF;
-}
-
 #app {
-background-color: #99CCFF;
+background-image: url('stripe_shallow.png');
+background-repeat: repeat;
+background-position: center top;
 border-radius: 20px 20px 10px 10px;
-padding: 1px 10px 10px 10px;
+padding: 10px 10px 10px 10px;
 margin-right: auto;
 margin-left: auto;
-margin-top: .5em;
-width: 950px;
+margin-top: 1em;
+width: 750px;
 }
 
 #app form {
+display: none;
+margin-top: 10px;
 padding: 5px;
 border-radius: 10px;
 background-color: #FFFFFF;
-margin: 0 auto;
+/*margin: auto auto;*/
 float: right;
 width: 170px;
 font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-border: 1px solid black;
+border:1px solid black;
 }
 
 #app label {
@@ -60,4 +46,19 @@ display: block
 width: 50px;
 float: right;
 clear: both;
+}
+
+#testingGround {
+background-image: url('black_pattern01.jpg');
+margin-top: 10px;
+} 
+
+#app h1 {
+display: inline;
+padding: 0px 5px;
+color: #E5CC2A;
+background-color: #000000;
+border-radius: 5px 5px 5px 5px;
+font-family: capture, sans-serif;
+margin: 10px;
 }
