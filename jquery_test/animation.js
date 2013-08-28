@@ -43,8 +43,8 @@ function applyAccel (velocity, maxSpeed, dimension, acceleration, time) {
 function animate (myRect, ctext, tground, startTime) {
 	var time = (new Date()).getTime() - startTime;
 	var calcTime = time / 100;
-	var acceleration = 20;
-	var maxSpeed = 100;
+	var acceleration = myRect.acceleration;
+	var maxSpeed = myRect.maxSpeed;
 	var borderEAbsorb = .75;
 	
 	//sets Velocity

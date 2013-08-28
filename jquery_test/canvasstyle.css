@@ -19,11 +19,10 @@ padding: 10px 10px 10px 10px;
 margin-right: auto;
 margin-left: auto;
 margin-top: 1em;
-width: 750px;
+width: 950px;
 }
 
 #app form {
-display: none;
 margin-top: 10px;
 padding: 5px;
 border-radius: 10px;
