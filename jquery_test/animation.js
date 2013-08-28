@@ -41,7 +41,7 @@ function applyAccel (velocity, maxSpeed, dimension, acceleration, time) {
 }
 
 function animate (myRect, ctext, tground, startTime) {
-	objectUpdate(myRect);
+	updateObject(myRect);
 
 	var time = (new Date()).getTime() - startTime;
 	var calcTime = time / 100;
