@@ -47,7 +47,7 @@ function animate (myRect, ctext, tground, startTime) {
 	var calcTime = time / 100;
 	var acceleration = myRect.acceleration;
 	var maxSpeed = myRect.maxSpeed;
-	var borderEAbsorb = .75;
+	var borderEAbsorb = myRect.eAbsorb;
 	
 	//sets Velocity
 	if (keys[37] || keys[39]) {
