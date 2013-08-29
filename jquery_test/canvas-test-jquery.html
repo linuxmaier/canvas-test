@@ -16,6 +16,7 @@
 <input id="speed" type="text" value=""><label>Max Speed: </label>
 <input id="accel" type="text" value=""><label>Acceleration: </label>
 <input id="frict" type="text" value=""><label>Friction: </label>
+<input id="borderAbsorb" type="text" value=""><label>Absorb: </label>
 </form>
 <canvas id="testingGround" width=750 height=500 style="border:1px solid #000000;">Canvas didn't render.</canvas>
 </div>
@@ -55,6 +56,7 @@ drawRect(myRect, ctext);
 document.getElementById("speed").defaultValue = myRect.maxSpeed;
 document.getElementById("accel").defaultValue = myRect.acceleration;
 document.getElementById("frict").defaultValue = myRect.friction;
+document.getElementById("borderAbsorb").defaultValue = myRect.eAbsorb;
 
 animate(myRect, ctext, tground, startTime);
 
